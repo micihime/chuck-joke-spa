@@ -1,7 +1,12 @@
 'use client';
 import { useState, useEffect } from 'react';
+import styles from './Header.module.css';
 
-export default function Header() {
+interface HeaderProps {
+    onCategorySelect: (category: string) => void;
+}
+
+export default function Header({ onCategorySelect }: HeaderProps) {
     const [categories, setCategories] = useState<string[]>([]);
 
     useEffect(() => {
@@ -11,13 +16,22 @@ export default function Header() {
     }, []);
 
     return (
-        <header>
-            <nav>
-                <span>
-                    random
-                </span>
+        <header className={styles.header}>
+            <nav className={styles.categories}>
+                <button
+                    className={styles.categoryButton}
+                    onClick={() => onCategorySelect('random')}
+                >
+                    Random
+                </button>
                 {categories.map((category) => (
-                    <span key={category}>{" " + category }</span>
+                    <button
+                        key={category}
+                        className={styles.categoryButton}
+                        onClick={() => onCategorySelect(category)}
+                    >
+                        {category.charAt(0).toUpperCase() + category.slice(1)}
+                    </button>
                 ))}
             </nav>
         </header>
