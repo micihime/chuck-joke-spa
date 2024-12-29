@@ -41,13 +41,14 @@ A single-page application (SPA) built with **Next.js**, **Material-UI**, and **R
 
 ## Folder Structure
 
+```plaintext
 app/  
 ├── components/     # Reusable React components  
 ├── features/       # Redux slices for state management  
 ├── pages/          # Next.js pages  
 ├── styles/         # Global and component-specific styles  
 ├── utils/          # Helper functions and constants  
-└── tests/          # Test files for components and features  
+└── tests/          # Test files for components and features
 
 ## Usage
 - View a Random Joke: Visit the homepage to see a random Chuck Norris joke.
