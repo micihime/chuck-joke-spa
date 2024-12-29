@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import styles from "../page.module.css";
+import styles from "./Joke.module.css";
 
 interface ChuckNorrisJoke {
     categories: string[];
