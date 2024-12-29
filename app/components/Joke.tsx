@@ -11,18 +11,25 @@ interface ChuckNorrisJoke {
     value: string;
 }
 
-export default function Joke() {
+interface JokeProps {
+    category?: string;
+}
+
+export default function Joke({ category }: JokeProps) {
     const [joke, setJoke] = useState<ChuckNorrisJoke | null>(null);
 
     const fetchJoke = async () => {
-        const response = await fetch("https://api.chucknorris.io/jokes/random"); 
+        const baseUrl = "https://api.chucknorris.io/jokes/random";
+        const url = category && category !== "random" ? `${baseUrl}?category=${category}` : baseUrl;
+        // console.log(url);
+        const response = await fetch(url);
         const data: ChuckNorrisJoke = await response.json();
         setJoke(data);
     };
 
     useEffect(() => {
         fetchJoke();
-    }, []);
+    }, [category]); // Re-fetch when category changes
 
     return (
         <>

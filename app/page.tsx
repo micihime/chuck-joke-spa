@@ -17,7 +17,7 @@ export default function Home() {
       <Header onCategorySelect={handleCategorySelect} />
       <div>{selectedCategory}</div>
       <main className={styles.main}>
-        <Joke />
+        <Joke category={selectedCategory} />
       </main>
       <Footer />
     </div>
