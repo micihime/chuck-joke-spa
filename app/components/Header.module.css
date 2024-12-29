@@ -24,3 +24,9 @@
     background-color: #333;
     color: white;
 }
+
+.categoryButton.active {
+    background-color: #4a90e2;
+    color: white;
+    transform: scale(1.05);
+}
