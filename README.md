@@ -41,21 +41,24 @@ A single-page application (SPA) built with **Next.js**, **Material-UI**, and **R
 
 ## Folder Structure
 
-```plaintext
-app/  
-├── components/     # Reusable React components  
-├── features/       # Redux slices for state management  
-├── pages/          # Next.js pages  
-├── styles/         # Global and component-specific styles  
-├── utils/          # Helper functions and constants  
-└── tests/          # Test files for components and features
+   ```plaintext
+   app/  
+   ├── components/     # Reusable React components  
+   ├── features/       # Redux slices for state management  
+   ├── pages/          # Next.js pages  
+   ├── styles/         # Global and component-specific styles  
+   ├── utils/          # Helper functions and constants  
+   └── tests/          # Test files for components and features
+   ```
 
 ## Usage
+
 - View a Random Joke: Visit the homepage to see a random Chuck Norris joke.
 - Search for a Joke: Use the search bar to find a joke containing a specific string.
 - Filter by Category: Select a category from the dropdown to view a random joke from that category.
   
 ## Testing
+
 This project includes test cases to validate functionality. Run the tests using the following command:
    ```bash
   yarn test
