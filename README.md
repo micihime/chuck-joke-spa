@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Chuckles with Chuck - Chuck Norris Jokes SPA 🤠  
 
-## Getting Started
+A simple single-page application (SPA) built with React that fetches and displays hilarious Chuck Norris jokes using the Chuck Norris Jokes API.
 
-First, run the development server:
+## About 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+A single-page application (SPA) built with **Next.js**, **Material-UI**, and **Redux**, which displays Chuck Norris jokes fetched from the [Chuck Norris API](https://api.chucknorris.io/). The application allows users to view random jokes, search for jokes, and filter jokes by category.  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Random Joke Display**: Shows a random Chuck Norris joke when the page loads.  
+- **Interactive Search**: Users can search for jokes containing specific text strings.  
+- **Category Selection**: Jokes can be filtered by category, and the category of the displayed joke is indicated.  
+- **Error Notifications**: Displays a message when no jokes match the search criteria.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Tech Stack  
 
-## Learn More
+- **Framework**: Next.js  
+- **UI Library**: Material-UI  
+- **State Management**: Redux with `@reduxjs/toolkit`  
+- **API**: [Chuck Norris API](https://api.chucknorris.io/)  
+- **Package Manager**: Yarn
 
-To learn more about Next.js, take a look at the following resources:
+## Installation  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/micihime/chuck-norris-jokes-app.git
+2. Navigate to the project directory:
+   ```bash
+   cd chuck-norris-jokes-app
+3. Install dependencies using Yarn:
+   ```bash
+   yarn install
+4. Start the development server:
+   ```bash
+   yarn dev
+5. Open the app in your browser:
+   ```bash
+   http://localhost:3000
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Folder Structure
 
-## Deploy on Vercel
+   ```plaintext
+   app/  
+   ├── components/     # Reusable React components  
+   ├── features/       # Redux slices for state management  
+   ├── pages/          # Next.js pages  
+   ├── styles/         # Global and component-specific styles  
+   ├── utils/          # Helper functions and constants  
+   └── tests/          # Test files for components and features
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Usage
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- View a Random Joke: Visit the homepage to see a random Chuck Norris joke.
+- Search for a Joke: Use the search bar to find a joke containing a specific string.
+- Filter by Category: Select a category from the dropdown to view a random joke from that category.
+  
+## Testing
+
+This project includes test cases to validate functionality. Run the tests using the following command:
+   ```bash
+  yarn test
