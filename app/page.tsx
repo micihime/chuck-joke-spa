@@ -13,8 +13,15 @@ export default function Home() {
     setSelectedCategory(category);
   };
 
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(event.target.value);
+  const handleSearchChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const query = event.target.value;
+    setSearchQuery(query);
+
+    if (query.length >= 3) {
+      const response = await fetch(`https://api.chucknorris.io/jokes/search?query=${query}`);
+      const data = await response.json();
+      console.log('Fetched jokes:', data.result);
+    }
   };
 
   return (
