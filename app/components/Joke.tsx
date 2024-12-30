@@ -4,10 +4,11 @@ import { ChuckNorrisJoke } from "../utils/ChuckNorrisJoke";
 
 interface JokeProps {
     category?: string;
+    joke?: ChuckNorrisJoke;
 }
 
-export default function Joke({ category }: JokeProps) {
-    const [joke, setJoke] = useState<ChuckNorrisJoke | null>(null);
+export default function Joke({ category, joke: inputJoke }: JokeProps) {
+    const [joke, setJoke] = useState<ChuckNorrisJoke | null>(inputJoke || null);
 
     const fetchJoke = async () => {
         const baseUrl = "https://api.chucknorris.io/jokes/random";
@@ -19,8 +20,10 @@ export default function Joke({ category }: JokeProps) {
     };
 
     useEffect(() => {
-        fetchJoke();
-    }, [category]); // Re-fetch when category changes
+        if (!inputJoke) {
+            fetchJoke();
+        }
+    }, [category, inputJoke]);
 
     return (
         <>
@@ -33,7 +36,7 @@ export default function Joke({ category }: JokeProps) {
                     </>
                 )}
             </div>
-            <button onClick={fetchJoke}>Get New Joke</button>
+            {!inputJoke && <button onClick={fetchJoke}>Get New Joke</button>}
         </>
     );
 }
