@@ -7,16 +7,27 @@ import { useState } from 'react';
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string>('random');
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   const handleCategorySelect = (category: string) => {
     setSelectedCategory(category);
   };
 
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(event.target.value);
+  };
+
   return (
     <div className={styles.page}>
       <Header onCategorySelect={handleCategorySelect} />
-      <div>{selectedCategory}</div>
       <main className={styles.main}>
+        <input
+          type="search"
+          placeholder="Search for a joke"
+          value={searchQuery}
+          onChange={handleSearchChange}
+          className={styles.searchBar}
+        />
         <Joke category={selectedCategory} />
       </main>
       <Footer />
