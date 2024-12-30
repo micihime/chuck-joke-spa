@@ -40,7 +40,11 @@ export default function Home() {
           onChange={handleSearchChange}
           className={styles.searchBar}
         />
-        {searchedJokes.length > 0 ? (
+        {searchQuery.length >= 3 && searchedJokes.length === 0 ? (
+          <div className={styles.noResults}>
+            No jokes found matching "{searchQuery}". Try a different search term!
+          </div>
+        ) : searchedJokes.length > 0 ? (
           <div className={styles.searchResults}>
             {searchedJokes.map((joke) => (
               <Joke key={joke.id} category={joke.categories[0] || 'uncategorized'} joke={joke} />
