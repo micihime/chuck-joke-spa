@@ -1,6 +1,7 @@
 'use client';
+import { TextField, InputAdornment } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 import { ChuckNorrisJoke } from "../utils/ChuckNorrisJoke";
-import styles from "../page.module.css";
 
 interface SearchBarProps {
     onSearchResults: (jokes: ChuckNorrisJoke[]) => void;
@@ -23,12 +24,31 @@ export default function SearchBar({ onSearchResults, searchQuery, setSearchQuery
     };
 
     return (
-        <input
-            type="search"
+        <TextField
+            fullWidth
+            variant="outlined"
             placeholder="Search for a joke"
             value={searchQuery}
             onChange={handleSearchChange}
-            className={styles.searchBar}
+            InputProps={{
+                startAdornment: (
+                    <InputAdornment position="start">
+                        <SearchIcon />
+                    </InputAdornment>
+                ),
+            }}
+            sx={{
+                marginBottom: 2,
+                '& .MuiOutlinedInput-root': {
+                    borderRadius: 2,
+                    backgroundColor: 'background.paper',
+                    '&:hover': {
+                        '& > fieldset': {
+                            borderColor: 'primary.main',
+                        }
+                    }
+                }
+            }}
         />
     );
 }
