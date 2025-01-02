@@ -1,5 +1,5 @@
 'use client';
-import styles from "./page.module.css";
+import { Container, Box, Typography, Paper } from '@mui/material';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Joke from "./components/Joke";
@@ -14,33 +14,54 @@ export default function Home() {
 
   const handleCategorySelect = (category: string) => {
     setSelectedCategory(category);
-    setSearchedJokes([]); // Clear searched jokes when category changes
+    setSearchedJokes([]);
   };
 
   return (
-    <div className={styles.page}>
+    <Box sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      minHeight: '100vh'
+    }}>
       <Header onCategorySelect={handleCategorySelect} />
-      <main className={styles.main}>
+      <Container component="main" sx={{
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 3,
+        py: 4
+      }}>
         <SearchBar
           onSearchResults={setSearchedJokes}
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
         />
+
         {searchQuery.length >= 3 && searchedJokes.length === 0 ? (
-          <div className={styles.noResults}>
-            No jokes found matching "{searchQuery}". Try a different search term!
-          </div>
+          <Paper elevation={2} sx={{ p: 3, textAlign: 'center' }}>
+            <Typography variant="h6" color="text.secondary">
+              No jokes found matching "{searchQuery}". Try a different search term!
+            </Typography>
+          </Paper>
         ) : searchedJokes.length > 0 ? (
-          <div className={styles.searchResults}>
+          <Box sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 2
+          }}>
             {searchedJokes.map((joke) => (
-              <Joke key={joke.id} category={joke.categories[0] || 'uncategorized'} joke={joke} />
+              <Joke
+                key={joke.id}
+                category={joke.categories[0] || 'uncategorized'}
+                joke={joke}
+              />
             ))}
-          </div>
+          </Box>
         ) : (
           <Joke category={selectedCategory} />
         )}
-      </main>
+      </Container>
       <Footer />
-    </div>
+    </Box>
   );
 }
